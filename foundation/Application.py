@@ -2,6 +2,8 @@ from flask import Flask
 from flask_restful import Api
 from foundation.Http.Router import Router
 from waitress import serve
+import foundation.Config as config
+
 
 class Application:
     def __init__(self):
@@ -13,5 +15,7 @@ class Application:
         # self.middleware = middleware
 
     def run(self):
-        serve(self.app, host='127.0.0.1', port=8011)
-        # self.app.run()
+        if config.get('env') is 'production': 
+            serve(self.app, host='0.0.0.0', port=80)
+        else:
+            self.app.run(host='0.0.0.0',port=80)
