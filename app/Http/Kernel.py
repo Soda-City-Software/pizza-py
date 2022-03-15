@@ -1,5 +1,5 @@
 from foundation.Http.Kernel import Kernel as HttpKernel
-import app.Http.Middleware.DenyAll
+import app.Http.Middleware as Middleware
 
 ## 
 # The application's global HTTP middleware stack.
@@ -11,7 +11,7 @@ import app.Http.Middleware.DenyAll
 
 def GlobalMiddleware():
     return [
-        
+        Middleware.DenyAll
     ]
 
 ## 
